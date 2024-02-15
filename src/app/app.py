@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, make_response, render_template
+from flask import Flask, redirect, request, jsonify, make_response, render_template
 from bson.json_util import dumps
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -11,6 +11,7 @@ import datetime
 import requests
 import logging
 import os
+
 
 
 app = Flask(__name__)
@@ -32,6 +33,8 @@ blacklist = db.blacklist
 
 
 app.config['SECRET_KEY'] = 'mysecret'
+
+
 
 @app.route("/", methods=["POST"])
 def handle_root_post():
@@ -308,7 +311,7 @@ def admin_required(func):
 def login():
     auth = request.authorization
     if auth:
-        user = staff.find_one( {'username':auth.username } )
+        user = collection_staff.find_one( {'username':auth.username } )
         if user is not None:
             if bcrypt.checkpw(bytes(auth.password, 'UTF-8'), user["password"]):
                 token = jwt.encode( {'user' : auth.username, 'admin' : user['admin'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, \
@@ -382,7 +385,6 @@ def populate_skins():
                 "bookmarks": [],  # Empty array for bookmarks
                 "reviews": []  # Empty array for reviews
 
-
             }
             documents.append(document)
 
@@ -453,6 +455,42 @@ def get_csgo_weapon_segments():
         print(f"Error: {response.text}")
         return jsonify({"error": "Failed to fetch data", "status_code": response.status_code, "message": response.text}), response.status_code
 
+#Leave review for website
+
+@app.route("/api/v1.0/feedback", methods=["POST"])
+def add_new_feedback():
+  # Create the review document
+  new_review = {
+    "username": request.form["username"],
+    "description": request.form["description"],  # Include description field
+    "stars": request.form["stars"],
+  }
+
+  # Insert the review into the collection_feedback
+  collection_feedback.insert_one(new_review)
+
+  # Create a link to access the new review
+  new_review_link = f"http://localhost:5000/api/v1.0/feedback/{id}/reviews/{str(new_review)}"
+
+  # Return the link to the new review
+  return make_response(jsonify({"url": new_review_link}), 200)
+
+#Display all feedback
+
+@app.route("/api/v1.0/feedback", methods=["GET"])
+def get_feedback():
+    # Fetch all reviews from the collection_feedback
+    reviews = collection_feedback.find({})
+
+    # Convert the query result to a list of dictionaries
+    reviews_list = list(reviews)
+
+    # Convert the list of dictionaries to a JSON string
+    # Use dumps from bson.json_util to properly format ObjectId and dates
+    reviews_json = dumps(reviews_list)
+
+    # Return the JSON string as a response
+    return make_response(reviews_json, 200)
 
 
 #Debugging

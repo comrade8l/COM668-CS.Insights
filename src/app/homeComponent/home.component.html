@@ -14,7 +14,8 @@
         <div class="banner-content">
             <h1>Welcome to CS.insights</h1>
             <p>Explore the best skins and items.</p>
-            <a href="#inventory" class="btn-primary">Browse Inventory</a>
+            <a href="#inventory" class="btn-primary" routerLink="/businesses" routerLinkActive="active">Browse Inventory </a>
+
         </div>
     </header>
 
@@ -28,16 +29,24 @@
         <p class="skin-price">£{{ skin.price['7_days'].average }}</p>
       </div>
     </div>
-
-
-
         <section class="testimonials">
             <h2>What Our Customers Say</h2>
+            <button>
+              <a routerLink="/reviews" routerLinkActive="active">Leave a Review</a>
+            </button>
+
             <div class="testimonial-carousel" x-data="carousel()" x-init="init()">
                 <!-- Customer testimonials dynamically loaded with interactive carousel functionality -->
+                <div class="reviews-container">
+                  <div *ngFor="let review of reviews">
+                    <h2>{{ review.username }}</h2>
+                    <p>{{ review.description }}</p>
+                    <p>Rating: {{ review.stars }}/5</p>
+                  </div>
+                </div>
+
             </div>
         </section>
-
     <footer>
         <p>© 2024 Your Site Name. All rights reserved.</p>
         <nav>

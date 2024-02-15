@@ -12,6 +12,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { NavComponent } from './navComponent/nav.component';
 import { LibraryComponent } from './libraryComponent/library.component';
 import { SearchComponent } from './searchComponent/search.component';
+import { ReviewsComponent } from './reviewsComponent/reviews.component';
 
 var routes: any = [
     {
@@ -33,7 +34,16 @@ var routes: any = [
         {
           path: 'search',
           component: SearchComponent
-        }
+        },
+        {
+        path: 'reviews',
+        component: ReviewsComponent
+        },
+
+
+
+
+
 ];
 
 @NgModule({

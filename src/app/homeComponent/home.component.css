@@ -232,3 +232,97 @@ footer {
 #inventory {
   text-align: center;
 }
+
+.testimonial-carousel button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding for size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  outline: none; /* Remove outline to keep the design clean */
+}
+
+.testimonial-carousel button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.testimonial-carousel button a {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* Ensure text color is white to match the button */
+  font-weight: bold; /* Make the font bold */
+}
+
+.testimonial-carousel button a.active {
+  color: #ffdd57; /* Highlight color for active link */
+}
+
+/* Optional: Adjust the li to remove default list styles if not already done */
+.testimonial-carousel li {
+  list-style-type: none; /* Remove default list bullet */
+}
+
+.testimonial-carousel {
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 20vh; /* Full height of the viewport */
+  text-align: center; /* Center the text inside the button, if needed */
+}
+
+button {
+  background-color: #007bff; /* Example: Blue background */
+  color: white; /* White text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Vertical and horizontal padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+  transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+button a {
+  text-decoration: none; /* Removes underline from the link */
+  color: white; /* Ensures text color matches button */
+  font-weight: bold; /* Makes the link text bold */
+}
+
+button a.active {
+  color: #FFD700; /* Changes text color when active, example: gold */
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between each review */
+  margin: 20px; /* Space around the container */
+  padding: 10px; /* Padding inside the container */
+  background-color: #f9f9f9; /* Light grey background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.reviews-container > div {
+  border-bottom: 1px solid #ccc; /* Separator between reviews */
+  padding-bottom: 15px; /* Space at the bottom of each review */
+  margin-bottom: 15px; /* Space between the border and the next review */
+}
+
+.reviews-container h2 {
+  color: #333; /* Dark grey color for username */
+  margin-bottom: 5px; /* Small space below the username */
+}
+
+.reviews-container p {
+  margin: 5px 0; /* Vertical margin for paragraphs */
+  color: #666; /* Medium grey for text */
+}
+
+.reviews-container p:last-child {
+  font-weight: bold; /* Make the rating bold */
+  color: #000; /* Black color for emphasis */
+}
