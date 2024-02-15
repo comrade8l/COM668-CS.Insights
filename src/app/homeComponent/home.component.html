@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Site Name</title>
+    <link rel="stylesheet" href="home.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js" defer></script>
+</head>
+<body>
+    <header class="main-banner" style="background-image: url('https://i.redd.it/wy0nsoawske51.png');">
+        <div class="banner-content">
+            <h1>Welcome to CS.insights</h1>
+            <p>Explore the best skins and items.</p>
+            <a href="#inventory" class="btn-primary">Browse Inventory</a>
+        </div>
+    </header>
+
+    <h1 id="inventory">Featured Skins</h1>
+    <div class="skins-container">
+      <div *ngFor="let skin of featuredSkins" class="skin-item">
+        <img [src]="" alt="{{ skin.name }}">
+        <h3>{{ skin.name }}</h3>
+        <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ skin.icon_url }}" class="card-img-top" alt="Skin Image">
+        <p>{{ skin.description }}</p>
+        <p class="skin-price">£{{ skin.price['7_days'].average }}</p>
+      </div>
+    </div>
+
+
+
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-carousel" x-data="carousel()" x-init="init()">
+                <!-- Customer testimonials dynamically loaded with interactive carousel functionality -->
+            </div>
+        </section>
+
+    <footer>
+        <p>© 2024 Your Site Name. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function carousel() {
+            return {
+                init() {
+                    // Carousel initialization logic
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

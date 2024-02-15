@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS3 Games Collection</title>
+  <link rel="stylesheet" href="search.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <br>
+  <br>
+  <div class="container">
+    <h1>Search</h1>
+
+    <div class="search-form">
+      <form (submit)="onSubmit(searchTerm.value)">
+        <input #searchTerm type="text" name="term" placeholder="Example: AWP | Dragon Lore">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let business of business_list | async" class="col-md-4">
+        <div class="card mb-3" style="cursor: pointer" [routerLink]="['/businesses', business._id]">
+          <div class="card-header">{{ business.name }}</div>
+          <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ business.name }}</h5>
+                            <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
+                            <p class="card-text">Exterior: {{business.exterior}}</p>
+                            <p class="skin-price">£{{ business.price['7_days'].average }}</p>
+          </div>
+          <div class="card-footer">
+            {{ business.review_count }} reviews (0)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

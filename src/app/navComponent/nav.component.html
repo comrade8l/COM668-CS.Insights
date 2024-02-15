@@ -1,0 +1,39 @@
+<!-- Wrapper div around the navbar for centering -->
+<div class="navbar-wrapper">
+  <nav class="navbar">
+    <div class="logo-container">
+      <a routerLink="/" class="navbar-logo">CS.Insights</a>
+    </div>
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)"
+
+
+        href="/businesses" class="dropbtn"> Catagories</a>
+        <div class="dropdown-content">
+          <a routerLink="/businesses">Rifle</a>
+          <a routerLink="/businesses/smg">SMG</a>
+          <a routerLink="/pistol">Pistol</a>
+          <a routerLink="/businesses/heavy">Heavy</a>
+          <a routerLink="/businesses/stickers">Stickers</a>
+          <a routerLink="/businesses/cases">Cases</a>
+          <a routerLink="/businesses/cases">Agents</a>
+          <a routerLink="/businesses/other">Other</a>
+        </div>
+      </li>
+      <li><a routerLink="/search" routerLinkActive="active">Search</a></li>
+      <a class="nav-link" *ngIf="authService.user$ | async as user" routerLink="/library/{{ user.email }}">Library</a>
+    </ul>
+    <div class="account-actions">
+      <div class="form-inline ms-auto">
+        <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
+            <button class="btn btn-outline-light" (click)="authService.logout()">Logout</button>
+        </ng-container>
+        <ng-template #loggedOut>
+            <button class="btn btn-outline-light" (click)="authService.loginWithRedirect({ appState: { target: router.url } })">Login</button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+</div>

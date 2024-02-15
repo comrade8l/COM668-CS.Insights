@@ -1,0 +1,126 @@
+/* Basic Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px; /* Adds padding around the entire body for better spacing */
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6; /* Improves readability */
+}
+
+/* Typography Enhancements */
+h1, h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px; /* Adds more space below headings */
+}
+
+h1 {
+  font-size: 2.5rem; /* Responsive font size */
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* Cards */
+.card {
+  background-color: #1e1e1e;
+  border: none;
+  transition: transform 0.3s ease;
+  margin: 20px; /* Increased spacing around each card */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-header, .card-footer {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px; /* Adds more padding for better structure */
+}
+
+.card-title {
+  color: #4caf50; /* Highlight color */
+}
+
+.card-img-top {
+  height: 180px; /* Fixed height for consistency */
+  object-fit: cover;
+}
+
+.card-text {
+  color: #bdbdbd;
+  margin-bottom: 10px; /* Adds spacing between text elements */
+}
+
+/* Buttons */
+.btn {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.btn:hover {
+  background-color: #4caf50;
+  color: #1e1e1e;
+}
+
+/* Pagination Enhancements */
+.row.mt-4 {
+  padding-top: 20px;
+  justify-content: space-between; /* Distributes spacing evenly */
+}
+
+.btn-outline-dark {
+  border-color: #4caf50;
+  color: #4caf50;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #4caf50;
+  color: #1e1e1e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    margin: 20px 0; /* Adjusts margin for smaller screens */
+  }
+
+  body {
+    padding: 10px; /* Adjusts body padding for smaller screens */
+  }
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4caf50;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #367c39;
+}
+
+.skin-price
+{
+  color: #3cff00 !important;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}

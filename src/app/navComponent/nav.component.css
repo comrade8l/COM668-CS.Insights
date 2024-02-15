@@ -1,0 +1,149 @@
+/* Core Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3c27f8;
+  color: white;
+  padding: 0 20px;
+  height: 80px; /* Adjust this value to make the navbar bigger */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.navbar-logo {
+  color: #FFA500; /* Orange color for the brand logo */
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px; /* Rounded corners for a softer look */
+}
+
+.nav-links li a:hover, .nav-links li a.active {
+  background-color: #FFA500; /* Orange background for hover/active links */
+  color: #121212;
+}
+
+.account-actions {
+  display: flex;
+}
+
+.btn {
+  padding: 8px 16px;
+  margin-left: 10px;
+  background: none;
+  border: 2px solid #FFA500; /* Orange border for buttons */
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #FFA500; /* Orange background on hover/focus */
+  color: #121212;
+}
+
+.btn-accent {
+  background-color: #1E90FF; /* Light blue background for the accent button */
+  color: white;
+  border: 2px solid #1E90FF; /* Ensuring the border matches the background */
+}
+
+.btn-accent:hover, .btn-accent:focus {
+  background-color: #FFA500; /* Switch to orange background for accent button on hover/focus */
+  color: #121212;
+  border-color: #FFA500; /* Orange border to match the background */
+}
+
+/* Responsive and Mobile Toggle Styles */
+@media (max-width: 768px) {
+  .navbar-toggle span, .navbar-toggle span::before, .navbar-toggle span::after {
+    background: #FFA500; /* Orange for mobile toggle lines */
+  }
+  /* Continue with your mobile responsive adjustments */
+}
+
+/* Ensuring sufficient space around the navbar links */
+.nav-links {
+  list-style-type: none;
+  padding-left: 0; /* Remove padding to align with the left edge if necessary */
+  margin: 0;
+  display: flex;
+  align-items: center; /* Aligns dropdown button text with other nav items */
+}
+
+/* Adjusting the dropdown button itself if necessary */
+.nav-links .dropdown {
+  margin-left: 20px; /* Adds space between the dropdown and adjacent nav items */
+}
+
+/* Dropdown content styling for better visual spacing and appearance */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 50%; /* Positions the dropdown in the middle of the nav item */
+  transform: translateX(-50%); /* Centers the dropdown */
+  background-color: #0D1F2D; /* Dark blue background */
+  min-width: 160px; /* Minimum width of dropdown */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px; /* Optional: adds rounded corners */
+  margin-top: 5px; /* Adds a little space between the nav item and dropdown */
+  z-index: 1;
+}
+
+/* Dropdown link styling */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center; /* Ensures text is centered if the dropdown is wider than the text */
+}
+
+/* Changes the hover effect to be more aesthetically pleasing */
+.dropdown-content a:hover {
+  background-color: #FFA500; /* Orange color for hover state */
+  border-radius: 4px; /* Rounded corners on hover */
+}
+
+/* Adjusts the dropdown to display upon hovering over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadeInDropdown 0.3s ease-out; /* Fades in the dropdown */
+}
+
+/* Keyframes for the dropdown fade-in effect */
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  /* Other responsive styles... */
+
+  .nav-links .dropdown {
+    margin-left: 0; /* Resets the margin for mobile view */
+  }
+}
+

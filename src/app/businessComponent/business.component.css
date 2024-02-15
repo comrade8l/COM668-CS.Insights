@@ -1,0 +1,154 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Container and Alignment */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Headers and Text */
+h1 {
+  color: #00ffea; /* Bright accent color for main headings */
+  margin-bottom: 2rem;
+}
+
+.card-header, .card-footer {
+  background-color: #1e1e1e; /* Darker shade for headers and footers */
+  color: #00ffea; /* Accent color for text */
+}
+
+.card-body {
+  background-color: #242424; /* Slightly lighter shade for the body */
+  color: #e0e0e0; /* Light grey for readable contrast */
+}
+
+/* Cards */
+.card {
+  margin-bottom: 1rem;
+  border: none;
+  transition: transform 0.2s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 255, 234, 0.2); /* Accent color glow */
+}
+
+/* Images */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-bottom: 4px solid #00ffea; /* Accent color underline */
+}
+
+/* Buttons and Forms */
+.btn-primary {
+  background-color: #00ffea; /* Accent color for buttons */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #08d9d6; /* Slightly lighter for hover effect */
+}
+
+.form-control {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: 1px solid #00ffea;
+}
+
+.form-control:focus {
+  border-color: #08d9d6;
+  box-shadow: 0 0 0 0.2rem rgba(0, 255, 234, 0.25);
+}
+
+/* Utility Classes */
+.error {
+  border-color: #ff3860; /* Error color */
+}
+
+.text-danger {
+  color: #ff3860;
+}
+
+.alert-warning {
+  background-color: #323232; /* Dark background for alerts */
+  color: #ff3860; /* Error color for text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+}
+
+.skin-price
+{
+  color: #3cff00 !important;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.price-box {
+  background-color: #f8f9fa; /* Light background for the box */
+  border: 1px solid #dee2e6; /* Slight border for definition */
+  border-radius: 0.25rem; /* Rounded corners */
+  margin-bottom: 1rem; /* Space between boxes */
+  padding: 10px; /* Padding inside the box */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.skin-price {
+  margin: 0; /* Remove default margins */
+  color: #333; /* Darker text for contrast against light background */
+}
+
+#libraryAddForm .btn {
+  font-size: 20px; /* Increase font size */
+  padding: 15px 30px; /* Increase padding to make the button larger */
+  background-color: #5cb85c; /* Make the button green */
+  border: none; /* Remove border */
+  color: white; /* Make the text color white */
+  text-transform: uppercase; /* Make the text uppercase */
+  transition: all 0.5s; /* Add a transition effect */
+  cursor: pointer; /* Change the cursor when hovering over the button */
+}
+
+#libraryAddForm .btn:hover {
+  background-color: #449d44; /* Change the background color when hovering over the button */
+}
+
+.btn-success {
+  font-size: 1rem; /* Larger font size for readability */
+  font-weight: bold; /* Bold font for emphasis */
+  color: #ffffff; /* White text color for contrast */
+  background-color: #00ffea; /* Bright accent color for visibility */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Larger padding for a bigger button */
+  border-radius: 5px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 255, 234, 0.4); /* Subtle glow effect */
+  transition: all 0.3s ease; /* Smooth transition for interaction */
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #08d9d6; /* Slightly lighter on hover/focus for interactive feedback */
+  color: #000000; /* Change text color on hover/focus for contrast */
+  box-shadow: 0 6px 12px rgba(0, 255, 234, 0.6); /* Increased glow effect */
+  transform: translateY(-2px); /* Slight raise effect on hover/focus */
+}
+
+/* Optional: Styling for the disabled state of the button */
+.btn-success:disabled {
+  background-color: #5e5e5e; /* Dimmed background for disabled state */
+  box-shadow: none; /* No shadow for a flat appearance */
+  transform: none; /* No transformation on hover/focus */
+}

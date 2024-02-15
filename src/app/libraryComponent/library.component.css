@@ -1,0 +1,78 @@
+/* Reset margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  background-color: #121212; /* Dark background for contrast */
+  color: #e0e0e0; /* Light text color for readability */
+
+}
+
+/* Container adjustments */
+.container {
+  padding: 2rem 0; /* Padding at the top and bottom of the container */
+}
+
+/* Row adjustments */
+.row {
+  justify-content: center; /* Centers the cards within the row */
+}
+
+/* Card styles */
+.card {
+  margin-bottom: 2rem; /* Space between the cards vertically */
+  background-color: #1e1e1e; /* Card background color */
+  color: #fff; /* Card text color */
+}
+
+/* Card header and footer styles */
+.card-header, .card-footer {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Card image styles */
+.card-img-top {
+  height: 500px; /* Consistent height for all images */
+  width: 100%;
+  object-fit: cover; /* Covers the image block without stretching */
+}
+
+/* Card body styles */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space evenly vertically inside the card */
+}
+
+/* Card title and text styles */
+.card-title, .card-text {
+  text-align: center; /* Center-aligns the text */
+  margin-bottom: 1rem; /* Space between the title and text */
+
+}
+
+/* Price styling */
+.skin-price {
+  color: #4CAF50; /* Accent color for the price */
+  font-size: 1.2rem; /* Larger font size for price */
+  text-align: center; /* Center-aligns the price */
+}
+
+/* Media query for medium screens, two cards per row */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem; /* Less space between cards vertically */
+  }
+}
+
+/* Media query for extra small screens, one card per row */
+@media (max-width: 576px) {
+  .card {
+    margin-bottom: 1rem; /* Less space between cards vertically */
+  }
+}
