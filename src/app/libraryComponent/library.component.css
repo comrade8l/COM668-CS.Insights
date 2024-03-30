@@ -1,78 +1,144 @@
-/* Reset margins and padding */
-* {
-  margin: 0;
-  padding: 0;
+/* Enhanced Reset */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* Body Styles */
+/* Full Body Style */
+html,
 body {
-  background-color: #121212; /* Dark background for contrast */
-  color: #e0e0e0; /* Light text color for readability */
-
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrollbar due to padding or margin */
+  
 }
 
-/* Container adjustments */
-.container {
-  padding: 2rem 0; /* Padding at the top and bottom of the container */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
 }
 
-/* Row adjustments */
-.row {
-  justify-content: center; /* Centers the cards within the row */
+/* Typography Enhancements */
+h1, h2, h3, p {
+  margin: 0 0 20px; /* Reset margin and add bottom margin for spacing */
+  color: #fff; /* Ensures all text is white unless otherwise specified */
 }
 
-/* Card styles */
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Card Styles */
 .card {
-  margin-bottom: 2rem; /* Space between the cards vertically */
-  background-color: #1e1e1e; /* Card background color */
-  color: #fff; /* Card text color */
+  background-color: #1e1e1e;
+  border-radius: 8px; /* Adds rounded corners to the cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+  overflow: hidden; /* Ensures nothing spills out of the card */
+  margin: 20px; /* Adjusted margin for spacing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds transition for hover effect */
 }
 
-/* Card header and footer styles */
-.card-header, .card-footer {
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhances shadow on hover */
+}
+
+/* Card Components */
+.card-header,
+.card-footer {
+  padding: 12px 20px;
   background-color: #333;
-  color: #fff;
 }
 
-/* Card image styles */
+.card-title {
+  color: #4caf50;
+}
+
 .card-img-top {
-  height: 500px; /* Consistent height for all images */
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: cover;
+}
+
+.card-text {
+  color: #bdbdbd;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block; /* Allows the use of margin and padding */
+  background-color: #4caf50;
+  color: #1e1e1e;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  text-decoration: none; /* Removes underline from text */
+  font-weight: bold; /* Makes the button text bold */
+}
+
+.btn:hover {
+  background-color: #367c39;
+  color: #ffffff;
+}
+
+/* Search Form */
+.search-form {
+  max-width: 100%; /* Prevents the form from exceeding the viewport width */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Footer */
+footer {
+  position: relative; /* Positioned relative to its normal position */
   width: 100%;
-  object-fit: cover; /* Covers the image block without stretching */
+  background-color: #1a1a1a;
+  color: #ddd;
+  text-align: center;
+  padding: 20px 0;
 }
 
-/* Card body styles */
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Distributes space evenly vertically inside the card */
+footer ul {
+  list-style-type: none; /* Removes bullets from list */
 }
 
-/* Card title and text styles */
-.card-title, .card-text {
-  text-align: center; /* Center-aligns the text */
-  margin-bottom: 1rem; /* Space between the title and text */
-
+footer a {
+  color: #e0e0e0;
+  transition: color 0.3s ease; /* Smooth transition for link color */
 }
 
-/* Price styling */
-.skin-price {
-  color: #4CAF50; /* Accent color for the price */
-  font-size: 1.2rem; /* Larger font size for price */
-  text-align: center; /* Center-aligns the price */
+footer a:hover {
+  color: #4b8bec;
 }
 
-/* Media query for medium screens, two cards per row */
+.social-icons a {
+  color: #bbb;
+  transition: color 0.3s ease; /* Smooth transition for social icons */
+}
+
+.social-icons a:hover {
+  color: #4b8bec;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .card {
-    margin-bottom: 1rem; /* Less space between cards vertically */
+  h1 {
+    font-size: 2rem; /* Slightly smaller font size on smaller screens */
   }
-}
 
-/* Media query for extra small screens, one card per row */
-@media (max-width: 576px) {
   .card {
-    margin-bottom: 1rem; /* Less space between cards vertically */
+    margin: 10px; /* Smaller margin on smaller screens */
   }
 }

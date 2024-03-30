@@ -11,6 +11,7 @@ import { ReviewService } from '../review.service'; // Update the path as per you
 export class HomeComponent implements OnInit {
   reviews: any[] = []; // Initialize reviews as an empty array
   featuredSkins: any[] = [];
+skin: any;
 
   constructor(
     public authService: AuthService,

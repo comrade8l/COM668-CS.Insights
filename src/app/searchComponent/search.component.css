@@ -1,129 +1,4 @@
-/* Basic Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  padding: 20px; /* Adds padding around the entire body for better spacing */
-  font-family: 'Roboto', sans-serif;
-  background-color: #121212;
-  color: #e0e0e0;
-  line-height: 1.6; /* Improves readability */
-}
-
-/* Typography Enhancements */
-h1, h2 {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 20px; /* Adds more space below headings */
-}
-
-h1 {
-  font-size: 2.5rem; /* Responsive font size */
-}
-
-h2 {
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-/* Cards */
-.card {
-  background-color: #1e1e1e;
-  border: none;
-  transition: transform 0.3s ease;
-  margin: 20px; /* Increased spacing around each card */
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card-header, .card-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 12px 20px; /* Adds more padding for better structure */
-}
-
-.card-title {
-  color: #4caf50; /* Highlight color */
-}
-
-.card-img-top {
-  height: 180px; /* Fixed height for consistency */
-  object-fit: cover;
-}
-
-.card-text {
-  color: #bdbdbd;
-  margin-bottom: 10px; /* Adds spacing between text elements */
-}
-
-/* Buttons */
-.btn {
-  border-color: #4caf50;
-  color: #4caf50;
-}
-
-.btn:hover {
-  background-color: #4caf50;
-  color: #1e1e1e;
-}
-
-/* Pagination Enhancements */
-.row.mt-4 {
-  padding-top: 20px;
-  justify-content: space-between; /* Distributes spacing evenly */
-}
-
-.btn-outline-dark {
-  border-color: #4caf50;
-  color: #4caf50;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-outline-dark:hover {
-  background-color: #4caf50;
-  color: #1e1e1e;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .card {
-    margin: 20px 0; /* Adjusts margin for smaller screens */
-  }
-
-  body {
-    padding: 10px; /* Adjusts body padding for smaller screens */
-  }
-}
-
-/* Custom Scrollbar for Webkit */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #333;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4caf50;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #367c39;
-}
-
-.skin-price
-{
-  color: #3cff00 !important;
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
 
 /* Search Form Styles */
 .search-form {
@@ -161,4 +36,147 @@ h2 {
 
 .search-form button:hover {
   background-color: #0056b3; /* Darker shade on hover for feedback */
+}
+/* Enhanced Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Full Body Style */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrollbar due to padding or margin */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, p {
+  margin: 0 0 20px; /* Reset margin and add bottom margin for spacing */
+  color: #fff; /* Ensures all text is white unless otherwise specified */
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Card Styles */
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px; /* Adds rounded corners to the cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+  overflow: hidden; /* Ensures nothing spills out of the card */
+  margin: 20px; /* Adjusted margin for spacing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds transition for hover effect */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhances shadow on hover */
+}
+
+/* Card Components */
+.card-header,
+.card-footer {
+  padding: 12px 20px;
+  background-color: #333;
+  color: #fff; /* Add this line */
+}
+.card-title {
+  color: #4caf50;
+}
+
+.card-img-top {
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: cover;
+}
+
+.card-text {
+  color: #bdbdbd;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block; /* Allows the use of margin and padding */
+  background-color: #4caf50;
+  color: #1e1e1e;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  text-decoration: none; /* Removes underline from text */
+  font-weight: bold; /* Makes the button text bold */
+}
+
+.btn:hover {
+  background-color: #367c39;
+  color: #ffffff;
+}
+
+/* Search Form */
+.search-form {
+  max-width: 100%; /* Prevents the form from exceeding the viewport width */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Footer */
+footer {
+  position: relative; /* Positioned relative to its normal position */
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #ddd;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer ul {
+  list-style-type: none; /* Removes bullets from list */
+}
+
+footer a {
+  color: #e0e0e0;
+  transition: color 0.3s ease; /* Smooth transition for link color */
+}
+
+footer a:hover {
+  color: #4b8bec;
+}
+
+.social-icons a {
+  color: #bbb;
+  transition: color 0.3s ease; /* Smooth transition for social icons */
+}
+
+.social-icons a:hover {
+  color: #4b8bec;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Slightly smaller font size on smaller screens */
+  }
+
+  .card {
+    margin: 10px; /* Smaller margin on smaller screens */
+  }
 }

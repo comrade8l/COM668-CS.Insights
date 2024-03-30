@@ -13,19 +13,16 @@
     <div class="row g-4">
         <!-- The *ngFor directive and [routerLink] are Angular specific and kept as is -->
         <div *ngFor="let business of business_list | async" class="col-12 col-md-4 col-lg-2">
-
             <div class="card h-100 shadow-lg bg-light border-0 skin-card" style="cursor: pointer" [routerLink]="['/businesses', business._id]">
                 <div class="card-header text-white">
                     {{ business.name }}
                 </div>
                 <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
                 <div class="card-body">
-
                     <h4 class="card-title">{{ business.name }}</h4>
                     <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
                     <p class="card-text">Exterior: {{business.exterior}}</p>
-                    <p class="skin-price">£{{ business.price['7_days'].average }}</p>
-
+                    <p class="skin-price">£{{ business.price['7_days']?.average ?? ' No Recent Listings' }}</p>
                 </div>
                 <div class="card-footer text-white">
                     <small>{{ business.review_count }} Reviews</small>
@@ -35,6 +32,21 @@
     </div>
 </div>
 
+<footer>
+  <p>© 2024 CS.Insights. All rights reserved.</p>
+  <nav>
+      <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+      </ul>
+  </nav>
+  <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

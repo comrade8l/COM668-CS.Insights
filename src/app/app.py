@@ -1,3 +1,4 @@
+import time
 from flask import Flask, redirect, request, jsonify, make_response, render_template
 from bson.json_util import dumps
 from flask_cors import CORS
@@ -61,6 +62,7 @@ def show_all_skins():
 #random skin
 @app.route("/api/v1.0/skins/random/", methods=["GET"])
 def show_all_skins_random():
+    time.sleep(2)
     page_size = 5  # Default page size
     if request.args.get('ps'):
         page_size = int(request.args.get('ps'))
@@ -456,7 +458,6 @@ def get_csgo_weapon_segments():
         return jsonify({"error": "Failed to fetch data", "status_code": response.status_code, "message": response.text}), response.status_code
 
 #Leave review for website
-
 @app.route("/api/v1.0/feedback", methods=["POST"])
 def add_new_feedback():
   # Create the review document

@@ -152,3 +152,50 @@ h1 {
   box-shadow: none; /* No shadow for a flat appearance */
   transform: none; /* No transformation on hover/focus */
 }
+
+/* Footer styles */
+footer {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #ddd;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer ul {
+  padding: 10px 0;
+}
+
+footer ul li {
+  display: inline;
+  padding: 0 10px;
+}
+
+footer a {
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #4b8bec;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4b8bec;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-banner {
+    padding: 60px 20px;
+  }
+  .skins-container, .testimonial-carousel {
+    flex-direction: column;
+  }
+}

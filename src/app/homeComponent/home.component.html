@@ -10,45 +10,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js" defer></script>
 </head>
 <body>
-    <header class="main-banner" style="background-image: url('https://i.redd.it/wy0nsoawske51.png');">
-        <div class="banner-content">
-            <h1>Welcome to CS.insights</h1>
-            <p>Explore the best skins and items.</p>
-            <a href="#inventory" class="btn-primary" routerLink="/businesses" routerLinkActive="active">Browse Inventory </a>
+  <header class="main-banner">
+    <div class="banner-content">
+        <h1>Welcome to CS.Insights</h1>
+        <p>Explore the best skins and items.</p>
+        <a href="#inventory" class="btn-primary" routerLink="/businesses" routerLinkActive="active">Browse Inventory</a>
+    </div>
+</header>
 
-        </div>
-    </header>
 
     <h1 id="inventory">Featured Skins</h1>
-    <div class="skins-container">
-      <div *ngFor="let skin of featuredSkins" class="skin-item">
-        <img [src]="" alt="{{ skin.name }}">
-        <h3>{{ skin.name }}</h3>
-        <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ skin.icon_url }}" class="card-img-top" alt="Skin Image">
+    <div class="skins-container" *ngIf="featuredSkins[0]; else spinner">
+      <div *ngFor="let skin of featuredSkins" class="skin-item" [routerLink]="['/businesses', skin?._id]">
+        <img [src]="" alt="{{ skin.name }} ">
+        <h3>{{ skin.name  }}</h3>
+        <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ skin.icon_url }}" class="card-img-top"  alt="Skin Image" >
         <p>{{ skin.description }}</p>
-        <p class="skin-price">£{{ skin.price['7_days'].average }}</p>
+        <p class="skin-price">£{{ skin?.price['7_days']?.average ?? skin?.price['all_time']?.average }}</p>
+
+
       </div>
     </div>
+    <ng-template #spinner>
+      <div class="text-center">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
         <section class="testimonials">
             <h2>What Our Customers Say</h2>
             <button>
-              <a routerLink="/reviews" routerLinkActive="active">Leave a Review</a>
+              <a routerLink="/reviews" routerLinkActive="active"><b>Leave a Review</b></a>
             </button>
-
             <div class="testimonial-carousel" x-data="carousel()" x-init="init()">
                 <!-- Customer testimonials dynamically loaded with interactive carousel functionality -->
-                <div class="reviews-container">
                   <div *ngFor="let review of reviews">
                     <h2>{{ review.username }}</h2>
                     <p>{{ review.description }}</p>
                     <p>Rating: {{ review.stars }}/5</p>
                   </div>
                 </div>
-
-            </div>
         </section>
     <footer>
-        <p>© 2024 Your Site Name. All rights reserved.</p>
+        <p>© 2024 CS.Insights. All rights reserved.</p>
         <nav>
             <ul>
                 <li><a href="#">Privacy Policy</a></li>

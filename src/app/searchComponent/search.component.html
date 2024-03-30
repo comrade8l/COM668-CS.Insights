@@ -11,9 +11,9 @@
 <body>
   <br>
   <br>
+
   <div class="container">
     <h1>Search</h1>
-
     <div class="search-form">
       <form (submit)="onSubmit(searchTerm.value)">
         <input #searchTerm type="text" name="term" placeholder="Example: AWP | Dragon Lore">
@@ -30,7 +30,8 @@
                             <h5 class="card-title">{{ business.name }}</h5>
                             <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
                             <p class="card-text">Exterior: {{business.exterior}}</p>
-                            <p class="skin-price">£{{ business.price['7_days'].average }}</p>
+                            <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+
           </div>
           <div class="card-footer">
             {{ business.review_count }} reviews (0)
@@ -39,5 +40,25 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2024 CS.Insights. All rights reserved.</p>
+    <nav>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WebService } from '../web.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'businesses',
   templateUrl: './businesses.component.html',

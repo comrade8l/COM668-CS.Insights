@@ -16,7 +16,6 @@
 
 <div class="container">
     <h1 class="text-center display-4"><u>Reviews</u></h1>
-
     <div class="row justify-content-center mt-5">
         <!-- Gun Details Column -->
         <div class="col-md-4">
@@ -26,9 +25,12 @@
                 </div>
                 <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
                 <div class="card-body">
-                    <p class="card-text">Gun Type: {{ business.gun_type }}</p>
-                    <p class="card-text">Exterior: {{ business.exterior }}</p>
-                    <p class="skin-price">£{{ business.price['7_days'].average }}</p>
+                  <h5 class="card-title">{{ business.name }}</h5>
+                  <br>
+                  <p class="card-text"><b>Gun Type:</b> {{business.gun_type}} - {{business.rarity}}</p>
+                  <p class="card-text"><b>Exterior:</b> {{ business.exterior ?? 'N/A' }}</p>
+                  <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+
                 </div>
                 <div class="card-footer">
                     <small>{{ business.review_count }} Reviews</small>
@@ -70,9 +72,7 @@
                 </div>
                  <div class="container">
     <!-- Your content here -->
-
 </div>
-
             </ng-container>
             <ng-template #loggedOut>
                 <div class="alert alert-warning" role="alert">
@@ -80,7 +80,6 @@
                 </div>
             </ng-template>
         </div>
-
         <!-- Reviews List Column -->
         <div class="col-md-4">
             <div *ngFor="let review of reviews | async" class="card review-card mb-4">
@@ -97,7 +96,6 @@
         </div>
     </div>
 </div>
-
 <div class="container">
   <h1 class="text-center display-4">Prices</h1>
   <div class="row justify-content-center mt-5">
@@ -137,11 +135,27 @@
       </div>
   </div>
 </div>
-
             <small class="text-white"><form [formGroup]="LibraryAddForm" *ngIf = "authService.user$ | async as bookmark" (ngSubmit)="addToLibrary(bookmark.email)">
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-success">Add to Library</button>
                 </div>
+
+
+                <footer>
+                  <p>© 2024 CS.Insights. All rights reserved.</p>
+                  <nav>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Use</a></li>
+                          <li><a href="#">Contact Us</a></li>
+                      </ul>
+                  </nav>
+                  <div class="social-icons">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+              </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

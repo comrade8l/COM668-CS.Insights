@@ -121,6 +121,105 @@ h2 {
 .skin-price
 {
   color: #3cff00 !important;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 10px;
+}
+
+/* Search Form Styles */
+.search-form {
+  max-width: 600px; /* Adjust width as needed */
+  margin: 0 auto 20px; /* Center the form and add some margin below */
+  padding: 15px;
+  background-color: #f8f9fa; /* Light background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.search-form form {
+  display: flex; /* Align input and button on the same line */
+  justify-content: space-between; /* Space between input and button */
+}
+
+.search-form input[type="text"] {
+  flex-grow: 1; /* Allow input to fill available space */
+  margin-right: 10px; /* Space between input and button */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Matching Bootstrap's input styling */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 1rem; /* Responsive font size */
+}
+
+.search-form button {
+  padding: 10px 20px; /* Ample padding for clickability */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: #ffffff; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Indicate the button is clickable */
+  font-size: 1rem; /* Responsive font size */
+}
+
+.search-form button:hover {
+  background-color: #0056b3; /* Darker shade on hover for feedback */
+}
+
+/* Footer styles */
+footer {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #ddd;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer ul {
+  padding: 10px 0;
+}
+
+footer ul li {
+  display: inline;
+  padding: 0 10px;
+}
+
+footer a {
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #4b8bec;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4b8bec;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-banner {
+    padding: 60px 20px;
+  }
+  .skins-container, .testimonial-carousel {
+    flex-direction: column;
+  }
+}
+
+ /* Custom CSS goes here */
+ .skin-card:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-header, .card-footer {
+  background-color: #343a40; /* Dark theme for headers and footers */
+}
+
+.page-navigation button {
+  width: 100%;
 }
