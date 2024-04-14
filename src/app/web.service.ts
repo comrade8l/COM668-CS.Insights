@@ -19,6 +19,36 @@ export class WebService {
   getBusinesses(page: number): Observable<any> {
     return this.http.get(`http://localhost:5000/api/v1.0/skins?pn=${page}`);
   }
+  //new stuff for filtering and sorting
+  getPistolSkins(page: number): Observable<any> {
+    // var sortValue
+    // if (order === 1){
+    //   sortValue = "ASC"
+    // } else {
+    //   sortValue = "DESC"
+    // }
+    return this.http.get(`http://localhost:5000/api/v2.0/skins/pistols?pn=${page}`);
+  }
+
+  getRifleSkins(page: number): Observable<any> {
+    return this.http.get('http://localhost:5000/api/v2.0/skins/rifles?pn=1');
+  }
+
+  getSmgSkins(page: number): Observable<any> {
+    return this.http.get('http://localhost:5000/api/v2.0/skins/smg?pn=1');
+  }
+
+  getHeavySkins(page: number): Observable<any> {
+    return this.http.get('http://localhost:5000/api/v2.0/skins/heavy?pn=1');
+  }
+  
+  getStickerSkins(page: number): Observable<any> {
+    return this.http.get('http://localhost:5000/api/v2.0/skins/stickers?pn=1');
+  }
+
+  getCasesSkins(page: number): Observable<any> {
+    return this.http.get('http://localhost:5000/api/v2.0/skins/containers?pn=1');
+  }
 
   getBusiness(id: string): Observable<any> {
     this.businessID = id;
@@ -28,6 +58,14 @@ export class WebService {
   getReviews(id: string): Observable<any> {
     return this.http.get(`http://localhost:5000/api/v1.0/skins/${id}/reviews`);
   }
+
+  getFloats(id: string): Observable<any> {
+    return this.http.get(`http://localhost:5000/api/v1.0/skins/float?pn=1`);
+  }
+  getStats(page: number): Observable<any> {
+    return this.http.get(`http://localhost:5000/api/v2.0/stats?pn=${page}`);
+  }
+  
 
   postReview(review: any): Observable<any> {
     let postData = new FormData();
@@ -56,7 +94,6 @@ export class WebService {
     this.businessID = businessID;
     return this.http.delete(`http://localhost:5000/api/v1.0/skins/delete/${this.businessID}`);
   }
-
 
   // Optionally, if you also want to fetch price data as JSON
   getSkinPrice(id: string): Observable<any> {

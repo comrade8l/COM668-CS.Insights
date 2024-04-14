@@ -13,6 +13,17 @@ import { NavComponent } from './navComponent/nav.component';
 import { LibraryComponent } from './libraryComponent/library.component';
 import { SearchComponent } from './searchComponent/search.component';
 import { ReviewsComponent } from './reviewsComponent/reviews.component';
+import { ContentComponent } from './contentComponent/content.component';
+import { PistolComponent } from './gun_types/pistol.component';
+import { rifleComponent } from './gun_types/rifle.component';
+import { SMGComponent } from './gun_types/smg.component';
+import { HeavyComponent } from './gun_types/heavy.component';
+import { CasesComponent } from './gun_types/cases.component';
+import { StickerComponent } from './gun_types/sticker.component';
+import { ListingsComponent } from './listings.component/listings.component';
+import { StatsComponent } from './stats.component/stats.component';
+
+
 
 var routes: any = [
     {
@@ -39,16 +50,52 @@ var routes: any = [
         path: 'reviews',
         component: ReviewsComponent
         },
-
-
-
-
+        {
+        path: 'content',
+        component: ContentComponent
+        },
+        {
+        path: 'pistol',
+        component: PistolComponent
+        },
+        {
+          path: 'rifle',
+          component: rifleComponent
+        },
+        {
+          path: 'smg',
+          component: SMGComponent
+        },
+        {
+          path: 'heavy',
+          component: HeavyComponent
+        },
+        {
+          path: 'cases',
+          component: CasesComponent
+        },
+        {
+          path: 'stickers',
+          component: StickerComponent
+        },
+        {
+          path: 'reviews',
+          component: ReviewsComponent
+        },
+        {
+          path: 'listing',
+          component: ListingsComponent
+        },
+        {
+          path: 'stats',
+          component: StatsComponent
+        },
 
 ];
 
 @NgModule({
 declarations: [
- AppComponent, BusinessesComponent, BusinessComponent, HomeComponent, NavComponent, LibraryComponent, SearchComponent
+ AppComponent, BusinessesComponent, BusinessComponent, HomeComponent, NavComponent, LibraryComponent, SearchComponent, ReviewsComponent, ContentComponent, PistolComponent, rifleComponent, SMGComponent, HeavyComponent, CasesComponent, StickerComponent, ReviewsComponent, ListingsComponent, StatsComponent
 ],
 imports: [
  BrowserModule, HttpClientModule, RouterModule.forRoot(routes), ReactiveFormsModule,

@@ -1,0 +1,105 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+
+
+/* Container customization for overall padding and margin */
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Card styling for information box */
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+.card-body {
+  padding: 15px;
+
+}
+
+
+.card-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.card-text ul {
+  padding-left: 20px;
+}
+
+/* Video container specific styles */
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.video-container iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+footer nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer .social-icons a {
+  margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+  .video-container iframe {
+      width: 48%;
+  }
+}
+
+@media (min-width: 768px) {
+  .video-container iframe {
+      width: 31%;
+  }
+}
+
+@media (min-width: 992px) {
+  .video-container iframe {
+      width: 23%;
+  }
+}

@@ -107,7 +107,6 @@
     width: 100%; /* Makes the image responsive */
     height: auto; /* Maintains aspect ratio */
     object-fit: cover;
-    color: #812323;
   }
   
   .card-text {
@@ -177,8 +176,98 @@
       font-size: 2rem; /* Slightly smaller font size on smaller screens */
     }
   
+    .card {body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.game-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.white-text {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: #4b8bec;
+}
+
+.social-icons a {
+    color: #bbb;
+    margin: 0 10px;
+}
+
+.social-icons a:hover {
+    color: #4b8bec;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
     .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
       margin: 10px; /* Smaller margin on smaller screens */
     }
   }
+
+  .white-text {
+    color: white;
+}
+
   

@@ -134,18 +134,25 @@ h2 {
 
 /* Search Form */
 .search-form {
-  max-width: 100%; /* Prevents the form from exceeding the viewport width */
+  max-width: 70%; /* Prevents the form from exceeding the viewport width */
+  margin: 0 auto 20px; /* Center the form and add some margin below */
+  padding: 15px;
+  background-color: #f8f9fa; /* Light background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+
   box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
 /* Footer */
 footer {
   position: relative; /* Positioned relative to its normal position */
-  width: 100%;
+  width: 100vw !important; /* Adjusted width to fill the viewport width */
   background-color: #1a1a1a;
   color: #ddd;
   text-align: center;
   padding: 20px 0;
+
 }
 
 footer ul {
@@ -161,22 +168,4 @@ footer a:hover {
   color: #4b8bec;
 }
 
-.social-icons a {
-  color: #bbb;
-  transition: color 0.3s ease; /* Smooth transition for social icons */
-}
 
-.social-icons a:hover {
-  color: #4b8bec;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem; /* Slightly smaller font size on smaller screens */
-  }
-
-  .card {
-    margin: 10px; /* Smaller margin on smaller screens */
-  }
-}

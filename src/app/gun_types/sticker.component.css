@@ -107,6 +107,7 @@ h2 {
   width: 100%; /* Makes the image responsive */
   height: auto; /* Maintains aspect ratio */
   object-fit: cover;
+  color: #812323;
 }
 
 .card-text {

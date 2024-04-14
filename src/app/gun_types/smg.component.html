@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Skins</title>
-    <link rel="stylesheet" href="businesses.component.css">
+    <link rel="stylesheet" href="smg.component.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <main class="container mt-5">
-        <section class="game-cards row">
-          <div *ngFor="let business of business_list | async" class="col-md-4">
-            <div class="card mb-3" [routerLink]="['/businesses', business._id]">
-              <div class="card-header">{{ business.name }}</div>
-              <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url}}" class="card-img-top" alt="{{ business.name }} Image">
-              <div class="card-body">
-                <h5 class="card-title">{{ business.name }}</h5>
-                <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
-                <p class="card-text">Exterior: {{business.exterior ?? 'N/A'}}</p>
-                <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
-                <p class="skin-price">{{ business.price ? '£' + (business.price['7_days']?.average ?? 'No Recent Listings') : 'Item Not Sellable.' }}</p>
+    <div class="container py-5">
+        <h1 class="text-center display-4"><u>All Skins</u></h1>
+        <h2 class="text-center mt-2"><small>Select a SMG you would like to view and even leave a rating!</small></h2>
+        <main class="container mt-5">
+            <section class="game-cards row">
+              <div *ngFor="let smg of smg_list | async" class="col-md-4">
+                <div class="card mb-3" [routerLink]="['/businesses', smg._id]">
+                  <div class="card-header">{{ smg.name }}</div>
+                  <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ smg.icon_url}}" class="card-img-top" alt="{{ smg.name }} Image">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ smg.name }}</h5>
+                    <p class="card-text">Gun Type: {{smg.gun_type}} - {{smg.rarity}}</p>
+                    <p class="card-text">Exterior: {{smg.exterior ?? 'N/A'}}</p>
+                    <p class="card-text"><b>Tradeable:</b> {{ smg.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+                    <p class="skin-price">{{ smg.price ? '£' + (smg.price['7_days']?.average ?? 'No Recent Listings') : 'Item Not Sellable.' }}</p>
+                  </div>
+                  <div class="card-footer">
+                    {{ smg.review_count }} reviews
+                  </div>
+                </div>
               </div>
-              <div class="card-footer">
-                {{ business.review_count }} reviews
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+            </section>
+          </main>
             <div class="row mt-4 page-navigation">
                 <div class="col-6">
                     <button class="btn btn-outline-dark" (click)="previousPage()">Previous</button>
@@ -37,7 +41,9 @@
                     <button class="btn btn-outline-dark" (click)="nextPage()">Next</button>
                 </div>
             </div>
-        
+        </div>
+
+
     <footer>
       <p>© 2024 CS.Insights. All rights reserved.</p>
       <nav>
@@ -54,6 +60,7 @@
       </div>
   </footer>
 
+    <!-- Optional JavaScript for Bootstrap components -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>

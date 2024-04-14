@@ -3,53 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Skins</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>All Skins</title>
     <link rel="stylesheet" href="library.component.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <div class="mt-3">
-    <div class="row g-4">
-        <!-- The *ngFor directive and [routerLink] are Angular specific and kept as is -->
-        <div *ngFor="let business of business_list | async" class="col-12 col-md-4 col-lg-2">
-            <div class="card h-100 shadow-lg bg-light border-0 skin-card" style="cursor: pointer" [routerLink]="['/businesses', business._id]">
-                <div class="card-header text-white">
-                    {{ business.name }}
+    <div class="container py-5">
+        <h1 class="text-center display-4"><u>All Skins</u></h1>
+        <h2 class="text-center mt-2"><small>Select a Skin you would like to view and even leave a rating!</small></h2>
+        <div class="mt-5">
+            <div class="row g-4">
+                <!-- The *ngFor directive and [routerLink] are Angular specific and kept as is -->
+                <div *ngFor="let business of business_list | async" class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-lg bg-light border-0 skin-card" style="cursor: pointer" [routerLink]="['/businesses', business._id]">
+                        <div class="card-header text-white">
+                            {{ business.name }}
+                        </div>
+                        <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ business.name }}</h5>
+                            <br>
+                            <p class="card-text"><b>Gun Type:</b> {{business.gun_type}} - {{business.rarity}}</p>
+                            <p class="card-text"><b>Exterior:</b> {{ business.exterior ?? 'N/A' }}</p>
+                            <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+                            <p class="skin-price" *ngIf="business.price != null; else not_sellable">£{{ business.price['7_days']?.average ?? ' No Recent Listings' }}</p>
+                            <ng-template #not_sellable>Item Not Sellable.</ng-template>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-                <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
-                <div class="card-body">
-                    <h4 class="card-title">{{ business.name }}</h4>
-                    <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
-                    <p class="card-text">Exterior: {{business.exterior}}</p>
-                    <p class="skin-price">£{{ business.price['7_days']?.average ?? ' No Recent Listings' }}</p>
-                </div>
-                <div class="card-footer text-white">
-                    <small>{{ business.review_count }} Reviews</small>
-                </div>
-            </div>
+            </div> 
         </div>
-    </div>
-</div>
+        
 
-<footer>
-  <p>© 2024 CS.Insights. All rights reserved.</p>
-  <nav>
-      <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Contact Us</a></li>
-      </ul>
-  </nav>
-  <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-  </div>
-</footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>  
+    <footer>
+      <p>© 2024 CS.Insights. All rights reserved.</p>
+      <nav>
+          <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Contact Us</a></li>
+          </ul>
+      </nav>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>

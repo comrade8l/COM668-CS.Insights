@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Skins</title>
+    <link rel="stylesheet" href="stats.component.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container mt-5">
+        <h1 class="text-center">Personalised Statistics</h1>
+        <p class="text-center">This page provides detailed statistics for each player, including kill-death ratios, map stats, and weapon stats.</p>
+    </header>
+    <main class="container mt-5">
+        <!-- Rest of your code... -->
+    </main>
+
+    <main class="container mt-5">
+        <section class="game-cards row">
+            <div *ngFor="let player of stats_list | async" class="col-md-4">
+                <div class="card mb-3" [routerLink]="['/players', player._id]">
+                    <div class="card-header">Kill Death Ratio</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Total Kills: <span class="white-text">{{ player.stats.total_kills }}</span></h5>
+                        <h5 class="card-title">Total Deaths: <span class="white-text">{{ player.stats.total_deaths }}</span></h5>
+                        <h5 class="card-title">Kills to Death Ratio: <span class="white-text">{{ (player.stats.total_kills / player.stats.total_deaths) | number:'1.2-2' }}</span></h5>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Maps Stats -->
+            <div *ngFor="let player of stats_list | async" class="col-md-4">
+                <div class="card mb-3" [routerLink]="['/players', player._id]">
+                    <div class="card-header">Maps Stats</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Total Dust 2 Wins: <span class="white-text">{{ player.stats.total_wins_map_de_dust2 }}</span></h5>
+                        <h5 class="card-title">Total Inferno Wins: <span class="white-text">{{ player.stats.total_wins_map_de_inferno }}</span></h5>
+                        <h5 class="card-title">Total Cobblestone Wins: <span class="white-text">{{ player.stats.total_wins_map_de_cbble }}</span></h5>
+                        <h5 class="card-title">Total Nuke Wins: <span class="white-text">{{ player.stats.total_wins_map_de_nuke }}</span></h5>
+                        <h5 class="card-title">Total Train Wins: <span class="white-text">{{ player.stats.total_wins_map_de_train }}</span></h5>
+                        <h5 class="card-title">Total Train Wins: <span class="white-text">{{ player.stats.total_wins_map_de_train }}</span></h5>
+                        <h4 class="card-title">Total Rounds Won</h4>
+                        <h5 class="card-title">Total Dust 2 Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_dust2 }}</span></h5>
+                        <h5 class="card-title">Total Inferno Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_inferno }}</span></h5>
+                        <h5 class="card-title">Total Cobblestone Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_cbble }}</span></h5>
+                        <h5 class="card-title">Total Nuke Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_nuke }}</span></h5>
+                        <h5 class="card-title">Total Train Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_train }}</span></h5>
+                        <h5 class="card-title">Total Train Rounds Won: <span class="white-text">{{ player.stats.total_rounds_map_de_train }}</span></h5>
+                        <h4 class="card-title">Win Rate</h4>
+                        <h5 class="card-title">Dust 2 Win Rate: <span class="white-text">{{ (player.stats.total_wins_map_de_dust2 / player.stats.total_rounds_map_de_dust2) | number:'1.2-2' }}</span></h5>
+                        <h5 class="card-title">Inferno Win Rate: <span class="white-text">{{ (player.stats.total_wins_map_de_inferno / player.stats.total_rounds_map_de_inferno) | number:'1.2-2' }}</span></h5>
+                        <h5 class="card-title">Cobblestone Win Rate: <span class="white-text">{{ (player.stats.total_wins_map_de_cbble / player.stats.total_rounds_map_de_cbble) | number:'1.2-2' }}</span></h5>
+                        <h5 class="card-title">Nuke Win Rate: <span class="white-text">{{ (player.stats.total_wins_map_de_nuke / player.stats.total_rounds_map_de_nuke) | number:'1.2-2' }}</span></h5>
+                        <h5 class="card-title">Train Win Rate: <span class="white-text">{{ (player.stats.total_wins_map_de_train / player.stats.total_rounds_map_de_train) | number:'1.2-2' }}</span></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Weapon Stats -->
+            <div *ngFor="let player of stats_list | async" class="col-md-4">
+                <div class="card mb-3" [routerLink]="['/players', player._id]">
+                    <div class="card-header">Weapon Stats</div>
+                    <div class="card-body">
+                        <!-- ... -->
+                        <h5 class="card-title">Total Kills with AK-47: <span class="white-text">{{ player.stats.total_kills_ak47}}</span></h5>
+                        <h5 class="card-title">Total Kills with M4A1-S: <span class="white-text">{{ player.stats.total_kills_m4a1 }}</span></h5>
+                        <h5 class="card-title">Total Kills with AWP: <span class="white-text">{{ player.stats.total_kills_awp }}</span></h5>
+                        <h5 class="card-title">Total Kills with Galil-AR: <span class="white-text">{{ player.stats.total_kills_galilar }}</span></h5>
+                        <h5 class="card-title">Total Kills with Famas: <span class="white-text">{{ player.stats.total_kills_famas }}</span></h5>
+                        <h5 class="card-title">Total Kills with SSG08: <span class="white-text">{{ player.stats.total_kills_ssg08 }}</span></h5>
+                        <h5 class="card-title">Total Kills with MP7: <span class="white-text">{{ player.stats.total_kills_mp7 }}</span></h5>
+                        <h5 class="card-title">Total Kills with MP9: <span class="white-text">{{ player.stats.total_kills_mp9 }}</span></h5>
+                        <h5 class="card-title">Total Kills with Nova: <span class="white-text">{{ player.stats.total_kills_nova }}</span></h5>
+                        <h5 class="card-title">Total Kills with Negev: <span class="white-text">{{ player.stats.total_kills_negev }}</span></h5>
+                        <h5 class="card-title">Total Kills with Knife: <span class="white-text">{{ player.stats.total_kills_knife }}</span></h5>
+                        <h5 class="card-title">Total Kills with Bizon: <span class="white-text">{{ player.stats.total_kills_bizon }}</span></h5>
+                        <h5 class="card-title">Total Kills with Tec9: <span class="white-text">{{ player.stats.total_kills_tec9 }}</span></h5>
+                        <h5 class="card-title">Total Kills with MAG-7: <span class="white-text">{{ player.stats.total_kills_mag7 }}</span></h5>
+                        <h5 class="card-title">Total Kills with Molotov: <span class="white-text">{{ player.stats.total_kills_molotov }}</span></h5>
+                        <h5 class="card-title">Total Kills with Zeus Taser: <span class="white-text">{{ player.stats.total_kills_taser }}</span></h5>
+                        <!-- ... -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <BR><BR><BR><BR><BR><BR><BR><BR>
+    <!-- Optional JavaScript for Bootstrap components -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+<footer>
+    
+    <p>© 2024 CS.Insights. All rights reserved.</p>
+    <nav>
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+</html>

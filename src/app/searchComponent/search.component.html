@@ -3,62 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PS3 Games Collection</title>
+  <title>CS.Insights</title>
   <link rel="stylesheet" href="search.component.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-  <br>
-  <br>
 
-  <div class="container">
-    <h1>Search</h1>
-    <div class="search-form">
+  <main class="container mt-5">
+    <h1 class="text-center">Search For A Skin</h1>
+    <section class="search-form mt-4 mb-5">
       <form (submit)="onSubmit(searchTerm.value)">
-        <input #searchTerm type="text" name="term" placeholder="Example: AWP | Dragon Lore">
-        <button type="submit">Search</button>
+        <div class="input-group mb-3">
+          <input #searchTerm type="text" class="form-control" name="term" placeholder="Example: AWP | Dragon Lore" aria-label="Game search">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </div>
+        </div>
       </form>
-    </div>
+    </section>
 
-    <div class="row">
+    <section class="game-cards row">
       <div *ngFor="let business of business_list | async" class="col-md-4">
-        <div class="card mb-3" style="cursor: pointer" [routerLink]="['/businesses', business._id]">
+        <div class="card mb-3" [routerLink]="['/businesses', business._id]">
           <div class="card-header">{{ business.name }}</div>
-          <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ business.name }}</h5>
-                            <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
-                            <p class="card-text">Exterior: {{business.exterior}}</p>
-                            <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
-
+          <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ business.name }}</h5>
+            <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
+            <p class="card-text">Exterior: {{business.exterior ?? 'N/A'}}</p>
+            <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+            <p class="skin-price">{{ business.price ? '£' + (business.price['7_days']?.average ?? 'No Recent Listings') : 'Item Not Sellable.' }}</p>
           </div>
           <div class="card-footer">
-            {{ business.review_count }} reviews (0)
+            {{ business.review_count }} reviews
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2024 CS.Insights. All rights reserved.</p>
-    <nav>
-        <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </nav>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
-</footer>
-
+    </section>
+  </main>
+<BR><BR><BR><BR> <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
+<footer>
+  <p>© 2024 CS.Insights. All rights reserved.</p>
+  <nav>
+      <ul> 
+      </ul>
+  </nav>
+</footer>
 </html>

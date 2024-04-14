@@ -18,7 +18,6 @@
     </div>
 </header>
 
-
     <h1 id="inventory">Featured Skins</h1>
     <div class="skins-container" *ngIf="featuredSkins[0]; else spinner">
       <div *ngFor="let skin of featuredSkins" class="skin-item" [routerLink]="['/businesses', skin?._id]">
@@ -26,7 +25,8 @@
         <h3>{{ skin.name  }}</h3>
         <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ skin.icon_url }}" class="card-img-top"  alt="Skin Image" >
         <p>{{ skin.description }}</p>
-        <p class="skin-price">£{{ skin?.price['7_days']?.average ?? skin?.price['all_time']?.average }}</p>
+        <p class="skin-price"><p class="skin-price" *ngIf="skin.price != null; else not_sellable">£{{ skin.price['all_time']?.average ?? ' No Recent Listings' }}</p>
+        <ng-template #not_sellable>Item Not Sellable.</ng-template>
 
 
       </div>
@@ -52,21 +52,7 @@
                   </div>
                 </div>
         </section>
-    <footer>
-        <p>© 2024 CS.Insights. All rights reserved.</p>
-        <nav>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </footer>
+    
 
     <script>
         function carousel() {
@@ -79,4 +65,19 @@
     </script>
 
 </body>
+<footer>
+  <p>© 2024 CS.Insights. All rights reserved.</p>
+  <nav>
+      <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+      </ul>
+  </nav>
+  <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
 </html>

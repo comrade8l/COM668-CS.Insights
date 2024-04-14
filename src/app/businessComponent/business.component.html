@@ -3,83 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Reviews</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        .error { border-color: red; }
-        .skin-card, .review-card { transition: transform 0.2s; }
-        .skin-card:hover, .review-card:hover { transform: scale(1.05); }
-        .card-header, .card-footer { background-color: #007bff; color: white; } /* Consistent color */
-    </style>
+    <title>All Skins</title>
+    <link rel="stylesheet" href="business.component.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
-    <h1 class="text-center display-4"><u>Reviews</u></h1>
+    <h1 class="text-center display-4">Information & Reviews</h1>
     <div class="row justify-content-center mt-5">
         <!-- Gun Details Column -->
-        <div class="col-md-4">
-            <div *ngFor="let business of business_list | async" class="card skin-card mb-4">
-                <div class="card-header">
-                    {{ business.name }}
+        <main class="container mt-5">
+            <section class="game-cards row">
+              <div *ngFor="let business of business_list | async" class="col-md-5">
+                <div class="card mb-3" [routerLink]="['/businesses', business._id]">
+                  <div class="card-header">{{ business.name }}</div>
+                  <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url}}" class="card-img-top" alt="{{ business.name }} Image">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ business.name }}</h5>
+                    <p class="card-text">Gun Type: {{business.gun_type}} - {{business.rarity}}</p>
+                    <p class="card-text">Exterior: {{business.exterior ?? 'N/A'}}</p>
+                    <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+                    <p class="skin-price">{{ business.price ? '£' + (business.price['7_days']?.average ?? 'No Recent Listings') : 'Item Not Sellable.' }}</p>
+                  </div>
+                  <div class="card-footer">
+                    {{ business.review_count }} reviews
+                  </div>
                 </div>
-                <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ business.icon_url }}" class="card-img-top" alt="{{ business.name }} Image" onerror="this.onerror=null; this.src='default-image-url';">
-                <div class="card-body">
-                  <h5 class="card-title">{{ business.name }}</h5>
-                  <br>
-                  <p class="card-text"><b>Gun Type:</b> {{business.gun_type}} - {{business.rarity}}</p>
-                  <p class="card-text"><b>Exterior:</b> {{ business.exterior ?? 'N/A' }}</p>
-                  <p class="card-text"><b>Tradeable:</b> {{ business.tradable == 1 ? 'Tradable' : 'Untradable' }}</p>
+              </div>
+            </section>
+          </main>
 
-                </div>
-                <div class="card-footer">
-                    <small>{{ business.review_count }} Reviews</small>
+        <!-- Review Submission Form Column -->
+        <div class="container mt-4"> <!-- Ensure that the form is wrapped in a container for proper alignment -->
+            <div class="row justify-content-center"> <!-- Use row and justify-content-center to center the card -->
+                <div class="col-md-8"> <!-- Adjust column size for better spacing -->
+                    <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
+                        <div class="card shadow-sm mb-4"> <!-- Adjust margin-bottom for consistent spacing -->
+                            <div class="card-header text-center">
+                                Rate this Skin
+                            </div>
+                            <div class="card-body">
+                                <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                                    <div class="form-group">
+                                        <label for="name">Username</label>
+                                        <input type="text" id="name" class="form-control" formControlName="username" 
+                                            [ngClass]="{'is-invalid': isInvalid('username')}"> <!-- Use is-invalid for error state -->
+                                        <div *ngIf="isInvalid('username')" class="invalid-feedback"> <!-- Add invalid feedback for errors -->
+                                            Please provide a valid username.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="review">Please leave your review below</label>
+                                        <textarea id="review" rows="3" class="form-control" formControlName="comment" 
+                                            [ngClass]="{'is-invalid': isInvalid('comment')}"></textarea>
+                                        <div *ngIf="isInvalid('comment')" class="invalid-feedback">
+                                            Please leave a review.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stars">Please provide a rating (5 = best)</label>
+                                        <select id="stars" class="form-control" formControlName="stars">
+                                            <option value="1">1 star</option>
+                                            <option value="2">2 stars</option>
+                                            <option value="3">3 stars</option>
+                                            <option value="4">4 stars</option>
+                                            <option value="5">5 stars</option>
+                                        </select>
+                                    </div>
+                                    <span *ngIf="isIncomplete()" class="text-danger">You must complete all fields</span>
+                                    <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary mt-3">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
+        
+                 
 
-        <!-- Review Submission Form Column -->
-        <div class="col-md-4">
-            <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header">
-                        Rate this Skin
-                    </div>
-                    <div class="card-body">
-                        <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                            <div class="form-group">
-                                <label for="name">Username</label>
-                                <input type="text" id="name" class="form-control" formControlName="username" [ngClass]="{'error': isInvalid('username')}">
-                            </div>
-                            <div class="form-group">
-                                <label for="review">Please leave your review below</label>
-                                <textarea id="review" rows="3" class="form-control" formControlName="comment" [ngClass]="{'error': isInvalid('comment')}"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="stars">Please provide a rating (5 = best)</label>
-                                <select id="stars" class="form-control" formControlName="stars">
-                                    <option value="1">1 star</option>
-                                    <option value="2">2 stars</option>
-                                    <option value="3">3 stars</option>
-                                    <option value="4">4 stars</option>
-                                    <option value="5">5 stars</option>
-                                </select>
-                            </div>
-                            <span *ngIf="isIncomplete()" class="text-danger">You must complete all fields</span>
-                            <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary mt-3">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                 <div class="container">
-    <!-- Your content here -->
-</div>
-            </ng-container>
+         
             <ng-template #loggedOut>
                 <div class="alert alert-warning" role="alert">
-                    Please login to review this game!
+                    Please login to view details of skin!
                 </div>
             </ng-template>
         </div>
+        
         <!-- Reviews List Column -->
         <div class="col-md-4">
             <div *ngFor="let review of reviews | async" class="card review-card mb-4">
@@ -95,9 +108,11 @@
             </div>
         </div>
     </div>
-</div>
+
+
 <div class="container">
   <h1 class="text-center display-4">Prices</h1>
+
   <div class="row justify-content-center mt-5">
       <!-- Iterate over each business -->
       <div *ngFor="let business of business_list | async" class="mb-4 w-100">
@@ -135,6 +150,7 @@
       </div>
   </div>
 </div>
+
             <small class="text-white"><form [formGroup]="LibraryAddForm" *ngIf = "authService.user$ | async as bookmark" (ngSubmit)="addToLibrary(bookmark.email)">
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-success">Add to Library</button>
