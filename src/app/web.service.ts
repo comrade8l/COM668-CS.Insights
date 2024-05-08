@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class WebService {
 
-  private businessID: string | undefined; // It's good practice to specify types
+  private skinsID: string | undefined; 
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,7 @@ export class WebService {
     return this.http.get(`http://localhost:5000/api/v1.0/skins/bookmarks/${username}`);
   }
 
-  getBusinesses(page: number): Observable<any> {
+  getAllSkins(page: number): Observable<any> {
     return this.http.get(`http://localhost:5000/api/v1.0/skins?pn=${page}`);
   }
   //new stuff for filtering and sorting
@@ -50,8 +50,8 @@ export class WebService {
     return this.http.get('http://localhost:5000/api/v2.0/skins/containers?pn=1');
   }
 
-  getBusiness(id: string): Observable<any> {
-    this.businessID = id;
+  getSkins(id: string): Observable<any> {
+    this.skinsID = id;
     return this.http.get(`http://localhost:5000/api/v1.0/skins/${id}`);
   }
 
@@ -63,8 +63,8 @@ export class WebService {
     return this.http.get(`http://localhost:5000/api/v1.0/skins/float?pn=1`);
   }
   getStats(page: number): Observable<any> {
-    return this.http.get(`http://localhost:5000/api/v2.0/stats?pn=${page}`);
-  }
+    return this.http.get(`http://localhost:5000/api/v2.0/stats?pn=1`);
+  } 
   
 
   postReview(review: any): Observable<any> {
@@ -77,22 +77,17 @@ export class WebService {
     let todayDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     postData.append("date", todayDate);
 
-    return this.http.post(`http://localhost:5000/api/v1.0/skins/${this.businessID}/reviews`, postData);
+    return this.http.post(`http://localhost:5000/api/v1.0/skins/${this.skinsID}/reviews`, postData);
   }
 
   addToLibrary(user: any): Observable<any> {
     let putData = new FormData();
     putData.append("bookmark", user.bookmark);
-    return this.http.put(`http://localhost:5000/api/v1.0/skins/update/bookmarks/${this.businessID}`, putData);
+    return this.http.put(`http://localhost:5000/api/v1.0/skins/update/bookmarks/${this.skinsID}`, putData);
   }
 
   getSearchResults(searchTerm: string): Observable<any> {
     return this.http.get(`http://localhost:5000/api/v1.0/skins/search?name=${searchTerm}`);
-  }
-
-  deleteGame(businessID: string): Observable<any> {
-    this.businessID = businessID;
-    return this.http.delete(`http://localhost:5000/api/v1.0/skins/delete/${this.businessID}`);
   }
 
   // Optionally, if you also want to fetch price data as JSON

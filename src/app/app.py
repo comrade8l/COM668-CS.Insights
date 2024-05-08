@@ -705,7 +705,6 @@ def get_player_stats(id):
 
     return make_response(response.text, 200)
     
-
 #Put data into MongoDB
 @app.route("/api/v2.0/playerstats/import/<id>")
 def get_player_stats_mongo(id):

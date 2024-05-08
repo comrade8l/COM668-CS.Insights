@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'businesses',
-  templateUrl: './businesses.component.html',
-  styleUrls: ['./businesses.component.css']
+  selector: 'skins',
+  templateUrl: './skins.component.html',
+  styleUrls: ['./skins.component.css']
 })
 
-export class BusinessesComponent  {
-  business_list: any = [];
+export class SkinsComponent  {
+  skins_list: any = [];
   page: number = 1;
   filters = { name: '',
 
@@ -22,21 +22,21 @@ export class BusinessesComponent  {
     if (sessionStorage['page']) {
       this.page = Number(sessionStorage['page']);
       }
-    this.business_list = this.webService.getBusinesses(this.page);
+    this.skins_list = this.webService.getAllSkins(this.page);
     }
 
     previousPage() {
       if (this.page > 1) {
         this.page = this.page - 1;
         sessionStorage['page'] = this.page;
-        this.business_list = this.webService.getBusinesses(this.page);
+        this.skins_list = this.webService.getAllSkins(this.page);
         }
     }
 
     nextPage() {
       this.page = this.page + 1;
       sessionStorage['page'] = this.page;
-      this.business_list = this.webService.getBusinesses(this.page);
+      this.skins_list = this.webService.getAllSkins(this.page);
     }
 
   }

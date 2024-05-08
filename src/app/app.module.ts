@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './appComponent/app.component';
-import { BusinessesComponent } from './businessesComponent/businesses.component';
-import { BusinessComponent } from './businessComponent/business.component';
+import { InspectComponent } from './inspectComponent/inspect.component';
 import { WebService } from './web.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -22,6 +21,7 @@ import { CasesComponent } from './gun_types/cases.component';
 import { StickerComponent } from './gun_types/sticker.component';
 import { ListingsComponent } from './listings.component/listings.component';
 import { StatsComponent } from './stats.component/stats.component';
+import { SkinsComponent } from './skinsComponent/skins.component';
 
 
 
@@ -31,12 +31,12 @@ var routes: any = [
         component: HomeComponent
         },
         {
-        path: 'businesses',
-        component: BusinessesComponent
+        path: 'skins',
+        component: SkinsComponent
         },
         {
-        path: 'businesses/:id',
-        component: BusinessComponent
+        path: 'skins/:id',
+        component: InspectComponent
         },
         {
           path: 'library/:username',
@@ -95,7 +95,7 @@ var routes: any = [
 
 @NgModule({
 declarations: [
- AppComponent, BusinessesComponent, BusinessComponent, HomeComponent, NavComponent, LibraryComponent, SearchComponent, ReviewsComponent, ContentComponent, PistolComponent, rifleComponent, SMGComponent, HeavyComponent, CasesComponent, StickerComponent, ReviewsComponent, ListingsComponent, StatsComponent
+ AppComponent, SkinsComponent, InspectComponent, HomeComponent, NavComponent, LibraryComponent, SearchComponent, ReviewsComponent, ContentComponent, PistolComponent, rifleComponent, SMGComponent, HeavyComponent, CasesComponent, StickerComponent, ReviewsComponent, ListingsComponent, StatsComponent
 ],
 imports: [
  BrowserModule, HttpClientModule, RouterModule.forRoot(routes), ReactiveFormsModule,

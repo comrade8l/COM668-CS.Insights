@@ -1,6 +1,7 @@
 // reviews.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../review.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'reviews',
@@ -10,7 +11,7 @@ import { ReviewService } from '../review.service';
 export class ReviewsComponent implements OnInit {
   reviews: any[] = [];
 
-  constructor(private reviewService: ReviewService) { }
+constructor(private reviewService: ReviewService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchReviews();
@@ -22,3 +23,5 @@ export class ReviewsComponent implements OnInit {
     });
   }
 }
+
+

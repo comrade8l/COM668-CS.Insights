@@ -13,7 +13,7 @@
     <main class="container mt-5">
         <section class="game-cards row">
           <div *ngFor="let rifle of rifle_list | async" class="col-md-4">
-            <div class="card mb-3" [routerLink]="['/businesses', rifle._id]">
+            <div class="card mb-3" [routerLink]="['/skins', rifle._id]">
               <div class="card-header">{{ rifle.name }}</div>
               <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ rifle.icon_url}}" class="card-img-top" alt="{{ rifle.name }} Image">
               <div class="card-body">

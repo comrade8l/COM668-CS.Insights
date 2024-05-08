@@ -13,7 +13,7 @@
     <main class="container mt-5">
         <section class="game-cards row">
           <div *ngFor="let cases of cases_list | async" class="col-md-4">
-            <div class="card mb-3" [routerLink]="['/businesses', cases._id]">
+            <div class="card mb-3" [routerLink]="['/skins', cases._id]">
               <div class="card-header">{{ cases.name }}</div>
               <img src="https://steamcommunity-a.akamaihd.net/economy/image/{{ cases.icon_url}}" class="card-img-top" alt="{{ cases.name }} Image">
               <div class="card-body">

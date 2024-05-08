@@ -17,7 +17,7 @@ business: any;
 
   ngOnInit() {
     if (sessionStorage['page']) {
-      this.page = Number(sessionStorage['page']);
+      this.page = sessionStorage['page'];
       }
     this.business_list = this.webService.getLibrary(this.route.snapshot.params['username']);
     }
@@ -26,13 +26,13 @@ business: any;
       if (this.page > 1) {
         this.page = this.page - 1;
         sessionStorage['page'] = this.page;
-        this.business_list = this.webService.getBusinesses(this.page);
+        this.business_list = this.webService.getAllSkins(this.page);
         }
     }
 
     nextPage() {
       this.page = this.page + 1;
       sessionStorage['page'] = this.page;
-      this.business_list = this.webService.getBusinesses(this.page);
+      this.business_list = this.webService.getAllSkins(this.page);
     }
   }

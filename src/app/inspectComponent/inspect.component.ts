@@ -10,25 +10,22 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'business',
-  templateUrl: './business.component.html',
-  styleUrls: ['./business.component.css']
+  selector: 'inspect',
+  templateUrl: './inspect.component.html',
+  styleUrls: ['./inspect.component.css']
 })
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class BusinessComponent {
-  business_list: any = [];
+export class InspectComponent {
+  skins_list: any = [];
   reviews: any = [];
   reviewForm: any;
   LibraryAddForm: any;
-  DeleteGameForm: any;
   username : any;
-  businessId: any;
-
-
+  skinsId: any;
 
   constructor(private webService: WebService,
     private route: ActivatedRoute,
@@ -37,10 +34,6 @@ export class BusinessComponent {
     private libraryFormBuilder: FormBuilder,
     @Inject(HttpClient) private http: HttpClient,
     public authService: AuthService) {}
-
-
-
-
 
   onSubmit() {
     this.webService.postReview(this.reviewForm.value)
@@ -88,26 +81,13 @@ export class BusinessComponent {
       stars: 5
       });
     this.createLibraryAddForm()
-    this.createDeleteGameForm();
-    this.business_list = this.webService.getBusiness(this.route.snapshot.params['id']);
+    this.skins_list = this.webService.getSkins(this.route.snapshot.params['id']);
     this.reviews = this.webService.getReviews(this.route.snapshot.params['id'])
   }
 
-createDeleteGameForm() {
-  this.DeleteGameForm = this.formBuilder.group({
-    id: [this.businessId]
-  });
-}
 
 
-deleteGame() {
-  this.businessId = this.route.snapshot.params['id'];
-  this.createDeleteGameForm();
-  this.webService.deleteGame(this.businessId)
-    .subscribe(response => {
-      this.router.navigate(['/businesses']);
-    });
-}
+
 
 
 
